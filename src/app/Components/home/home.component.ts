@@ -27,4 +27,16 @@ track:TrackInfo={
 
 };
 
+// Day2
+userFeedback:string="Very Good"
+func1(){
+  console.log("Hello from button");
+
+}
+
+showImg:boolean=true;
+toggleImg(){
+
+  this.showImg=!this.showImg;
+}
 }

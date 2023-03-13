@@ -1,3 +1,4 @@
+<!-- Day1 -->
 <!-- interpolation -->
 <!-- data binding -->
 <!-- <h2>{{user}}</h2> -->
@@ -29,4 +30,23 @@
 </ul>
 
 
-<img src="{{track.trackLogo}}">
+<!-- <img src="{{track.trackLogo}}"> -->
+
+
+<!-- ########################################## -->
+<!-- Day2 -->
+<!-- property binding -->
+<img [src]="track.trackLogo" *ngIf="showImg">
+
+<!-- <button onclick="func1()"></button> -->
+<br>
+<!-- <button class="btn btn-primary" (click)="func1()">Click</button> -->
+<button class="btn btn-primary" (click)="toggleImg()">Toggle Img</button>
+
+
+<!-- <input type="text" class="form-control" name="user" id="usr" value="{{userFeedback}}"> -->
+<!-- <input type="text" class="form-control" name="user" id="usr" [value]="userFeedback"> -->
+<input type="text" class="form-control" name="user" id="usr" [(ngModel)]="userFeedback">
+<!-- <input type="text" class="form-control" name="user" id="usr" [value]="userFeedback"> -->
+<!-- <h1>{{userFeedback}}</h1> -->
+
