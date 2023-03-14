@@ -1,0 +1,23 @@
+<!--Test viewChild  -->
+<div class="mb-2">
+<label for="user">User Name:</label>
+<input type="text" class="form-control" name="user" id="user" #userName>
+</div>
+<button (click)="getPrd()">Get products Array</button>
+<!-- ############################# -->
+<h1>From parent component</h1>
+<div>
+  <label for="cat">Select Category:</label>
+  <select name="cat" id="cat" class="form-control" [(ngModel)]="selectedCatID">
+    <option value="0">All</option>
+    <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+  </select>
+</div>
+
+<!-- <h1 class="bg-danger">{{selectedCatID}}</h1> -->
+<app-products [receivedCatID]="selectedCatID" (totalPriceEvent)="totalPrice($event)"></app-products>
+
+
+<h1>From Parent : {{totalPriceChanged}}</h1>
+
+

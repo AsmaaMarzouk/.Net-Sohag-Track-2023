@@ -9,6 +9,7 @@
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
+      <th scope="col">Count</th>
       <th scope="col">Buy</th>
     </tr>
   </thead>
@@ -36,9 +37,12 @@
     <!-- ng-container , ng-template , ng-content -->
 
 
-    <ng-container *ngFor="let prd of productList;let i=index">
+    <!-- <ng-container *ngFor="let prd of productList;let i=index"> -->
+    <!-- Day3 -->
+    <ng-container *ngFor="let prd of prdListOfCat;let i=index">
       <!-- <tr *ngIf="prd.quantity>0"> -->
-        <tr [ngStyle]="{'background-color':(prd.quantity==0)?'lightyellow':'lightblue','color':(prd.quantity==0)?'red':'blue'}">
+      <tr
+        [ngStyle]="{'background-color':(prd.quantity==0)?'lightyellow':'lightblue','color':(prd.quantity==0)?'red':'blue'}">
         <!-- <td>{{prd.id}}</td> -->
         <td>{{i+1}}</td>
         <td>{{prd.name | uppercase}}</td>
@@ -67,7 +71,9 @@
         <!-- <td>{{prd.price | currency:'EGP':'code'}}</td> -->
         <td>{{prd.price | currency:'USD':'code'}}</td>
 
-        <td><button class="btn btn-danger" [disabled]="prd.quantity==0">Buy</button></td>
+        <!-- Day3 -->
+        <td><input type="number" name="count" id="count" class="form-control" #itemsCount></td>
+        <td><button class="btn btn-danger" [disabled]="prd.quantity==0" (click)="updateTotalPrice(prd.price,itemsCount.value)">Buy</button></td>
         <!-- <td><button class="btn btn-danger" [hidden]="prd.quantity==0">Buy</button></td> -->
 
       </tr>
@@ -75,3 +81,8 @@
   </tbody>
 
 </table>
+
+
+
+<!-- Test total price -->
+<!-- <h1 class="bg-danger">For test total price from products component : {{orderTotalPrice}}</h1> -->
