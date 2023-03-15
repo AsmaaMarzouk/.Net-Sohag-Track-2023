@@ -9,8 +9,10 @@
       <th scope="col">Image</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
+      <th scope="col">Price with tax</th>
       <th scope="col">Count</th>
       <th scope="col">Buy</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
 
@@ -46,7 +48,7 @@
         <!-- <td>{{prd.id}}</td> -->
         <td>{{i+1}}</td>
         <td>{{prd.name | uppercase}}</td>
-        <td><img [src]="prd.imgURL" class="img-fluid" width="190" height="150"></td>
+        <td><img [src]="prd.imgURL" class="img-fluid" width="190" height="150" BorderStyle="brown" borderColor="orange"></td>
         <!-- <td>{{prd.quantity}}</td> -->
         <td>
           <!-- <span *ngIf="prd.quantity>0">{{prd.quantity}}</span>
@@ -70,12 +72,14 @@
         </td>
         <!-- <td>{{prd.price | currency:'EGP':'code'}}</td> -->
         <td>{{prd.price | currency:'USD':'code'}}</td>
+        <td>{{prd.price | calcTax:30 | currency:'USD':'code'}}</td>
 
         <!-- Day3 -->
         <td><input type="number" name="count" id="count" class="form-control" #itemsCount></td>
         <td><button class="btn btn-danger" [disabled]="prd.quantity==0" (click)="updateTotalPrice(prd.price,itemsCount.value)">Buy</button></td>
         <!-- <td><button class="btn btn-danger" [hidden]="prd.quantity==0">Buy</button></td> -->
 
+        <td><button class="btn btn-warning" (click)="prdDetails(prd.id)">Details</button></td>
       </tr>
     </ng-container>
   </tbody>

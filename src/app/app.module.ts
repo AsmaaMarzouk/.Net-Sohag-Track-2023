@@ -10,6 +10,11 @@ import { HomeComponent } from './Components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './Components/products/products.component';
 import { OrderParentComponent } from './Components/order-parent/order-parent.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { MainComponent } from './Components/main/main.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { BorderStyleDirective } from './Directives/border-style.directive';
+import { CalcTaxPipe } from './pipes/calc-tax.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { OrderParentComponent } from './Components/order-parent/order-parent.com
     SidebarComponent,
     HomeComponent,
     ProductsComponent,
-    OrderParentComponent
+    OrderParentComponent,
+    NotFoundComponent,
+    MainComponent,
+    ProductDetailsComponent,
+    BorderStyleDirective,
+    CalcTaxPipe
   ],
   imports: [
     BrowserModule,
