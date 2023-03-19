@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/Models/iproduct';
+import { ProductApiService } from 'src/app/Services/product-api.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -30,7 +31,11 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   // Day4
   // intailize , inject service
-  constructor(private productService: ProductService,private router:Router) {
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private productApi: ProductApiService
+  ) {
     // Day3
     this.totalPriceEvent = new EventEmitter<number>();
     // ##################
@@ -97,9 +102,24 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
   ngOnChanges(): void {
     // this.getProductsByCatID();
-
     // Day4
-   this.prdListOfCat = this.productService.getProductsByCatID(this.receivedCatID);
+    //  this.prdListOfCat = this.productService.getProductsByCatID(this.receivedCatID);
+    // Day5
+    if(this.receivedCatID==0){
+
+      this.productApi.getAllProducts().subscribe(data1=>{
+        this.prdListOfCat=data1;
+        // console.log(data1);
+
+      })
+    }
+    else{
+    this.productApi.getProductsByCatId(this.receivedCatID).subscribe(data => {
+      this.prdListOfCat = data;
+      // console.log(data);
+
+    });
+  }
   }
   ngOnInit(): void {
     // this.getProductsByCatID()
@@ -129,12 +149,10 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   // Day4
-  prdDetails(prdID:number){
-
+  prdDetails(prdID: number) {
     // path , parameters
-    this.router.navigate(['productDetails',prdID]);
+    this.router.navigate(['productDetails', prdID]);
   }
-
 
   // #######################
 }

@@ -15,6 +15,8 @@ import { MainComponent } from './Components/main/main.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { BorderStyleDirective } from './Directives/border-style.directive';
 import { CalcTaxPipe } from './pipes/calc-tax.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { AddNewProductComponent } from './Components/Admin/add-new-product/add-new-product.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { CalcTaxPipe } from './pipes/calc-tax.pipe';
     MainComponent,
     ProductDetailsComponent,
     BorderStyleDirective,
-    CalcTaxPipe
+    CalcTaxPipe,
+    AddNewProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

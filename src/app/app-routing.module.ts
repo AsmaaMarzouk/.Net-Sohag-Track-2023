@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddNewProductComponent } from './Components/Admin/add-new-product/add-new-product.component';
 import { HomeComponent } from './Components/home/home.component';
 import { MainComponent } from './Components/main/main.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
@@ -50,7 +51,8 @@ const routes: Routes = [
         component: ProductsComponent,
         title: 'Products Page',
       },
-      {path:'productDetails/:prodId',component:ProductDetailsComponent}
+      {path:'productDetails/:prodId',component:ProductDetailsComponent},
+      {path:'AdminNewPrd',component:AddNewProductComponent}
     ],
   },
 
